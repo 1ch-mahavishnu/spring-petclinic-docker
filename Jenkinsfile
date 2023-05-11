@@ -29,5 +29,14 @@ pipeline {
         }
       }
     }
+
+    
+    stage('Tag Deploy') {
+      steps {
+        script {
+          sh "sudo docker run -p 80:8080 petclinic-app:latest "
+        }
+      }
+    }
   }
 }
