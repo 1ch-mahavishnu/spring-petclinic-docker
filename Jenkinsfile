@@ -25,7 +25,7 @@ pipeline {
           // sh "sudo docker tag spring-petclinic-docker ${tag}"
           // sh "echo ${tag} > IMAGE_TAG"
           sh "sudo docker login -u balamuruganelangovan -p Bala@1997"
-          sh "sudo docker push spring-petclinic-docker"
+          sh "sudo docker push balamuruganelangovan/spring-petclinic-docker"
         }
       }
     }
