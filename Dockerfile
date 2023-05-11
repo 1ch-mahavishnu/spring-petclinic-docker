@@ -1,6 +1,5 @@
 FROM eclipse-temurin:17-jdk-jammy
-RUN pwd
-RUN chmod +x mvnw
+
 WORKDIR /app
 
 COPY .mvn/ .mvn
