@@ -22,7 +22,7 @@ pipeline {
         script {
           // def buildNumber = env.BUILD_NUMBER
           // def tag = "balamuruganelangovan/spring-petclinic-docker:${buildNumber}"
-          // sh "sudo docker tag spring-petclinic-docker ${tag}"
+          sh "sudo docker tag spring-petclinic-docker:latest"
           // sh "echo ${tag} > IMAGE_TAG"
           sh "sudo docker login -u balamuruganelangovan -p Bala@1997"
           sh "sudo docker push balamuruganelangovan/spring-petclinic-docker"
