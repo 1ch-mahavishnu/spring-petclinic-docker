@@ -10,6 +10,8 @@ pipeline {
     
     stage('Build Docker Image') {
       steps {
+        sh 'ls'
+        sh 'pwd'
         sh 'sudo docker build -t petclinic-app . -f Dockerfile'
       }
     }
