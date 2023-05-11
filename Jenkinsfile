@@ -10,7 +10,7 @@ pipeline {
     
     stage('Build Docker Image') {
       steps {
-        sh 'docker build -t petclinic-app . -f Dockerfile'
+        sh 'sudo docker build -t petclinic-app . -f Dockerfile'
       }
     }
     
@@ -19,8 +19,8 @@ pipeline {
         script {
           def buildNumber = env.BUILD_NUMBER
           def tag = "balamuruganelangovan/spring-petclinic-docker:${buildNumber}"
-          sh "docker tag spring-petclinic-docker ${tag}"
-          sh "echo ${tag} > IMAGE_TAG"
+          sh "sudo docker tag spring-petclinic-docker ${tag}"
+          sh "sudo echo ${tag} > IMAGE_TAG"
         }
       }
     }
@@ -28,9 +28,8 @@ pipeline {
     stage('Push Docker Image') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-          sh'''docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-               docker push ${IMAGE_TAG} 
-          '''
+          sh "sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+          sh "sudo docker push $(cat IMAGE_TAG)"
         }
       }
     }
